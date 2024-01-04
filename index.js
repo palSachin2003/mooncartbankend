@@ -7,14 +7,10 @@ import product from './Router/project.router'
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import order from './Router/order.router'
-import instaxCate from './Router/instax.router'; // instax category
-import instaxProduct from './Router/instaxProject.router';
-import instaxUser from './Router/instaxUser.router';
-import instaxCart from './Router/instaxCart.router '
-import instaxBuy from './Router/instaxBuy.router' 
 
 
- 
+
+
 
 
 const app = express();
@@ -25,23 +21,32 @@ app.use(Cors());
 dotenv.config();
 
 
-app.listen(PORT,()=>{
-    console.log('server is running on '+PORT)
+app.listen(PORT, () => {
+    console.log('server is running on ' + PORT)
 });
 
-mongoose.connect('mongodb+srv://palshachin:mooncart@cluster0.4uaoew9.mongodb.net/')
-.then(()=> console.log('BD Connected!'))
-.catch(err=> console.log(err))
+const connectToDatabase = async () => {
+    try {
+        await mongoose.connect("mongodb+srv://palshachin:mooncart@cluster0.4uaoew9.mongodb.net/Mooncart?retryWrites=true&w=majority", {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('Connected to MongoDB Atlas')
+    }
+    catch (error) {
+        console.error('Error connecting to MongoDB Atlas:', error);
+
+    }
+}
+connectToDatabase();
+
+
 
 app.use(userRouter)
-
 app.use(category)
 app.use(cart)
 app.use(product)
 app.use(order)
-app.use(instaxCate)
-app.use(instaxProduct)
-app.use(instaxUser)
-app.use(instaxCart)
-app.use(instaxBuy)
+
+
 

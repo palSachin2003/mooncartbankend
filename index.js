@@ -17,7 +17,14 @@ const app = express();
 app.use(express.json())
 app.use(express.static(__dirname))
 const PORT = 8001
-app.use(Cors());
+
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+};
+
+app.use(Cors(corsOptions));
+// app.use(Cors());
 dotenv.config();
 
 

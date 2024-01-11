@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect("mongodb+srv://palshachin:Sachin123@cluster0.4uaoew9.mongodb.net/Mooncart?retryWrites=true&w=majority", {
+    await mongoose.connect("mongodb+srv://palshachin:sachin123@cluster0.4uaoew9.mongodb.net/Mooncart?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

@@ -1,48 +1,51 @@
 import express from 'express';
-import Cors from 'cors'
-import userRouter from './Router/user.router'
-import category from './Router/category.router'
-import cart from './Router/cart.router'
-import product from './Router/project.router'
+import cors from 'cors'; // Use lowercase for the 'cors' package
+import userRouter from './Router/user.router';
+import categoryRouter from './Router/category.router'; // Fix the import path for the category router
+import cartRouter from './Router/cart.router'; // Fix the import path for the cart router
+import productRouter from './Router/project.router'; // Fix the import path for the project router
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import order from './Router/order.router'
-import instaxCate from './Router/instax.router'; // instax category
-import instaxProduct from './Router/instaxProject.router';
-import instaxUser from './Router/instaxUser.router';
-import instaxCart from './Router/instaxCart.router '
-import instaxBuy from './Router/instaxBuy.router' 
-
-
- 
-
+import orderRouter from './Router/order.router';
 
 const app = express();
-app.use(express.json())
-app.use(express.static(__dirname))
-const PORT = 8001
-app.use(Cors());
+const PORT = 8001;
+
+const corsOptions = {
+  // origin: 'http://localhost:3000',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.static(__dirname));
+
 dotenv.config();
 
-
-app.listen(PORT,()=>{
-    console.log('server is running on '+PORT)
+app.listen(PORT, () => {
+  console.log('Server is running on ' + PORT);
 });
 
-mongoose.connect('mongodb+srv://palshachin:mooncart@cluster0.4uaoew9.mongodb.net/')
-.then(()=> console.log('BD Connected!'))
-.catch(err=> console.log(err))
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect("mongodb+srv://palshachin:sachin123@cluster0.4uaoew9.mongodb.net/Mooncart?retryWrites=true&w=majority", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB Atlas');
+  } catch (error) {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  }
+};
 
-app.use(userRouter)
+connectToDatabase();
 
-app.use(category)
-app.use(cart)
-app.use(product)
-app.use(order)
-app.use(instaxCate)
-app.use(instaxProduct)
-app.use(instaxUser)
-app.use(instaxCart)
-app.use(instaxBuy)
+<<<<<<< HEAD
 
-
+=======
+app.use(userRouter);
+app.use(categoryRouter); // Fix the usage of category router
+app.use(cartRouter); // Fix the usage of cart router
+app.use(productRouter); // Fix the usage of project router
+app.use(orderRouter);
+>>>>>>> 93cff201cdd1b582f0f24ae4662bacffe4c9c89d

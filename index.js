@@ -41,12 +41,8 @@ const connectToDatabase = async () => {
 
 connectToDatabase();
 
-<<<<<<< HEAD
-
-=======
 app.use(userRouter);
-app.use(categoryRouter); // Fix the usage of category router
-app.use(cartRouter); // Fix the usage of cart router
-app.use(productRouter); // Fix the usage of project router
+app.use(categoryRouter);
+app.use(cartRouter); 
+app.use(productRouter); 
 app.use(orderRouter);
->>>>>>> 93cff201cdd1b582f0f24ae4662bacffe4c9c89d

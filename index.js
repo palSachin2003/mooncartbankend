@@ -1,5 +1,5 @@
 import express from 'express';
-import cors from 'cors'; // Use lowercase for the 'cors' package
+import cors from 'cors';
 import userRouter from './Router/user.router';
 import categoryRouter from './Router/category.router'; // Fix the import path for the category router
 import cartRouter from './Router/cart.router'; // Fix the import path for the cart router
@@ -31,6 +31,7 @@ const connectToDatabase = async () => {
     await mongoose.connect("mongodb+srv://palshachin:sachin123@cluster0.4uaoew9.mongodb.net/Mooncart?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      
     });
     console.log('Connected to MongoDB Atlas');
   } catch (error) {

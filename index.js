@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import userRouter from './Router/user.router';
-import categoryRouter from './Router/category.router'; // Fix the import path for the category router
-import cartRouter from './Router/cart.router'; // Fix the import path for the cart router
-import productRouter from './Router/project.router'; // Fix the import path for the project router
+import categoryRouter from './Router/category.router';
+import cartRouter from './Router/cart.router'; 
+import productRouter from './Router/project.router'; 
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import orderRouter from './Router/order.router';
